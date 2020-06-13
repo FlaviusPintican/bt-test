@@ -1,0 +1,11 @@
+generatePassword:
+    path: /users/{userId}/password
+    controller: App\Controller\UserController::generatePassword
+    methods: POST
+    requirements:
+      id: '\d+'
+
+verifyPassword:
+  path: /users/{userId}/password/verify
+  controller: App\Controller\UserController::verifyPassword
+  methods: POST
