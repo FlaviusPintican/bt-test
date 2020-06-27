@@ -32,8 +32,8 @@ final class Version20200405144801 extends AbstractMigration
             'Migration can only be executed safely on \'mysql\'.'
         );
 
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, password VARCHAR(100) DEFAULT NULL,
-            expired_at DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER 
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, password VARCHAR(100) DEFAULT NOT NULL,
+            expired_at DATETIME DEFAULT NULL, is_first_used TINYINT(1), PRIMARY KEY(id)) DEFAULT CHARACTER 
             SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
     }

@@ -34,6 +34,7 @@ class UserService implements UserServiceInterface
            $this->getUser($userId)
             ->setPassword(password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]))
             ->setExpiredAt((new DateTime())->modify('+2 minutes'))
+            ->setIsFirstUsed(false)
         );
 
         return $password;
@@ -52,9 +53,13 @@ class UserService implements UserServiceInterface
 
         if (null === $user->getExpiredAt()
             || $user->getExpiredAt()->getTimestamp() < (new DateTime())->getTimestamp()
-            || !password_verify($password, $user->getPassword())) {
+            || !password_verify($password, $user->getPassword())
+            || true === $user->getIsFirstUsed()) {
             return false;
         }
+
+        $user->setIsFirstUsed(true);
+        $this->userRepository->save($user);
 
         return true;
     }

@@ -23,9 +23,14 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", name="expired_at", nullable=true)
      */
-    private $expired_at;
+    private $expiredAt;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_first_used", nullable=true)
+     */
+    private $isFirstUsed;
 
     /**
      * @return int|null
@@ -59,16 +64,35 @@ class User
      */
     public function getExpiredAt(): ?DateTimeInterface
     {
-        return $this->expired_at;
+        return $this->expiredAt;
     }
 
     /**
-     * @param DateTimeInterface $expired_at
+     * @param DateTimeInterface $expiredAt
      * @return $this
      */
-    public function setExpiredAt(DateTimeInterface $expired_at): self
+    public function setExpiredAt(DateTimeInterface $expiredAt): self
     {
-        $this->expired_at = $expired_at;
+        $this->expiredAt = $expiredAt;
+
+        return $this;
+    }
+
+    /**
+     * @return null|bool
+     */
+    public function getIsFirstUsed(): ?bool
+    {
+        return $this->isFirstUsed;
+    }
+
+    /**
+     * @param bool $isFirstUsed
+     * @return $this
+     */
+    public function setIsFirstUsed(bool $isFirstUsed) : self
+    {
+        $this->isFirstUsed = $isFirstUsed;
 
         return $this;
     }

@@ -45,7 +45,6 @@ final class ExceptionListener
 
         if ($exception instanceof ORMException || $exception instanceof ConnectionException) {
             $this->logger->error($message);
-            $message = 'Internal Server Error!!!';
         }
 
         $response = new JsonResponse(['message' => $message], $statusCode, $headers);

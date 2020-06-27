@@ -31,7 +31,7 @@ class UserControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_it_generate_password(): void
+    public function testItGenerateNewPassword(): void
     {
         $this->userService->expects(static::once())
             ->method('generatePassword')
@@ -52,7 +52,7 @@ class UserControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_it_returns_password_validity_status(bool $isValidPassword): void
+    public function testItReturnsPasswordValidityStatus(bool $isValidPassword): void
     {
         $this->userService->expects(static::once())
             ->method('verifyPassword')
