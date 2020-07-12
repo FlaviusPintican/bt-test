@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Services\TaskService;
 use App\Services\TaskServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +11,7 @@ class TaskController extends AbstractController
 {
     private TaskServiceInterface $taskService;
 
-    public function __construct(TaskService $taskService)
+    public function __construct(TaskServiceInterface $taskService)
     {
         $this->taskService = $taskService;
     }
