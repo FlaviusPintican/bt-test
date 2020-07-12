@@ -7,5 +7,5 @@
 `Domain(Entity, Event)` \
 `Infrastructure(Repository)` \
 `Application(DTO, Listener, Migrations, Services` \
-`Controller`
+`Controller` \
 `tests writting some functional tests for controller action`
