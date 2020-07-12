@@ -2,9 +2,9 @@
 
 namespace DoctrineMigrations;
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
-use Doctrine\DBAL\DBALException;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
@@ -32,8 +32,9 @@ final class Version20200405144801 extends AbstractMigration
             'Migration can only be executed safely on \'mysql\'.'
         );
 
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, password VARCHAR(100) DEFAULT NOT NULL,
-            expired_at DATETIME DEFAULT NULL, is_first_used TINYINT(1), PRIMARY KEY(id)) DEFAULT CHARACTER 
+        $this->addSql('CREATE TABLE task (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(25) NOT NULL,
+            description VARCHAR(255) NOT NULL, status VARCHAR(5) NOT NULL,
+            created_at DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER 
             SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
     }
@@ -47,9 +48,9 @@ final class Version20200405144801 extends AbstractMigration
     public function down(Schema $schema) : void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql',
-            'Migration can only be executed safely on \'mysql\'.'
+                       'Migration can only be executed safely on \'mysql\'.'
         );
 
-        $this->addSql('DROP TABLE user');
+        $this->addSql('DROP TABLE task');
     }
 }

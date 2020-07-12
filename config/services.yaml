@@ -7,9 +7,12 @@ services:
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    TaskService:
+        class: App\Services\TaskService
+        autowire: true
     App\Controller\:
         resource: '../src/Controller'
-        tags: ['controller.service_arguments']
+        arguments: ['@TaskService']
     App\Listener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }

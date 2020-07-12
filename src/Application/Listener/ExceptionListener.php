@@ -12,24 +12,13 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 final class ExceptionListener
 {
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
 
-    /**
-     * @param LoggerInterface $logger
-     */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
 
-    /**
-     * @param ExceptionEvent $event
-     *
-     * @return void
-     */
     public function onKernelException(ExceptionEvent $event): void
     {
         $exception = $event->getThrowable();

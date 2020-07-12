@@ -1,11 +1,16 @@
-generatePassword:
-    path: /users/{userId}/password
-    controller: App\Controller\UserController::generatePassword
+createTask:
+    path: /tasks
+    controller: App\Controller\TaskController::createTask
     methods: POST
-    requirements:
-      id: '\d+'
 
-verifyPassword:
-  path: /users/{userId}/password/verify
-  controller: App\Controller\UserController::verifyPassword
-  methods: POST
+displayTasks:
+  path: /tasks
+  controller: App\Controller\TaskController::getTasks
+  methods: GET
+
+displayTask:
+  path: /tasks/{id}
+  controller: App\Controller\TaskController::getTask
+  methods: GET
+  requirements:
+    id: '\d+'

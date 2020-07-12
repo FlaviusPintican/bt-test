@@ -1,10 +1,11 @@
-#### This project generate a one time used password for an existing user and check this validity.
-#### The generated password is valid for 2 minutes.
-### Project structure
+#### Routes
+##### routes.yaml -> some public API
 
-#### Controller -> handle the request
-#### Listener -> handle http exceptions
-#### Migrations -> generate tables structure
-#### Repository -> generate queries for the database interogation
-#### tests -> performs unit tests of the application
-##### The structure of this project it's an MVC project
+#### Application Structure
+
+##### Usind DDD architecture the application is composed by:
+`Domain(Entity, Event)` \
+`Infrastructure(Repository)` \
+`Application(DTO, Listener, Migrations, Services` \
+`Controller`
+`tests writting some functional tests for controller action`
